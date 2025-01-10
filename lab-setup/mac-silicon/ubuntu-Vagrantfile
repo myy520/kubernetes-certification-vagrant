@@ -1,5 +1,5 @@
 require 'yaml'
-settings = YAML.load_file(File.join(File.dirname(__FILE__), 'settings.yaml'))
+settings = YAML.load_file(File.join(File.dirname(__FILE__), 'ubuntu-settings.yaml'))
 
 Vagrant.configure("2") do |config|
   config.vm.box = settings['box_name']

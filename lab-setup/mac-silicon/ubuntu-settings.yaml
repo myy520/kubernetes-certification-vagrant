@@ -1,4 +1,4 @@
-# settings.yaml
+# ubuntu-settings.yaml
 # box_name: "sloopstash/ubuntu-22-04"
 box_name: "bento/ubuntu-22.04"
 # box_version: "2.1.1"
