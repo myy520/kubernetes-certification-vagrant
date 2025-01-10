@@ -1,4 +1,4 @@
-# ubuntu-settings.yaml
+# debian-settings.yaml
 box_name: "bento/ubuntu-22.04"
 vm:
 - name: "controlplane"

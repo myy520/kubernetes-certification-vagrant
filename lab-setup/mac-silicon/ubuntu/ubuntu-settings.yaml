@@ -1,5 +1,7 @@
 # debian-settings.yaml
+# box_name: "sloopstash/ubuntu-22-04"
 box_name: "bento/ubuntu-22.04"
+# box_version: "2.1.1"
 vm:
 - name: "controlplane"
   ip: "192.168.201.10"
@@ -8,8 +10,8 @@ vm:
 - name: "node01"
   ip: "192.168.201.11"
   memory: "2048"
-  cpus: "1"
+  cpus: "2"
 - name: "node02"
   ip: "192.168.201.12"
   memory: "2048"
-  cpus: "1"
+  cpus: "2"
