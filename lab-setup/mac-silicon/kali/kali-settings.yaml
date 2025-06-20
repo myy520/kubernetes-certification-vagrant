@@ -1,8 +1,8 @@
 # centos-settings.yaml
 # box_name: "gyptazy/centos9-arm64"
-box_name: "sT0wn/kalilinux_arm64"
+box_name: "kali_arm64"
 # box_version: "2.1.1"
-box_version: "2025.2"
+box_version: "222"
 vm:
   - name: "kali-node01"
     ip: "172.16.32.222"
