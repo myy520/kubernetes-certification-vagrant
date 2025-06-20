@@ -1,6 +1,6 @@
 # centos-settings.yaml
 # box_name: "gyptazy/centos9-arm64"
-box_name: "centos9-arm64"
+box_name: "centos2025"
 # box_version: "2.1.1"
 box_version: "0"
 vm:
