@@ -2,10 +2,9 @@
 # box_name: "gyptazy/centos9-arm64"
 box_name: "kali2025"
 # box_version: "2.1.1"
-box_version: "v0"
 vm:
-  - name: "kali-node01"
-    ip: "172.16.32.222"
+  - name: "kali2025"
+    ip: "172.16.32.10"
     memory: "4048"
     cpus: "4"
 #  - name: "kali-node02"
