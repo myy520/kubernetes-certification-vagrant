@@ -1,0 +1,41 @@
+require 'yaml'
+
+# 加载 settings.yaml 配置
+settings = YAML.load_file(File.join(File.dirname(__FILE__), 'kali-settings.yaml'))
+
+Vagrant.configure("2") do |config|
+  config.vm.box = settings['box_name']
+  config.vm.box_version = settings['box_version']
+  config.vm.box_check_update = false
+
+  settings['vm'].each do |vm_config|
+    config.vm.define vm_config['name'] do |vm|
+      # 设置主机名和网络
+      vm.vm.hostname = vm_config['name']
+      vm.vm.network "private_network", ip: vm_config['ip']
+       vm.vm.synced_folder ".", "/vagrant", disabled: false
+
+      # 配置 VMware Fusion
+      vm.vm.provider "vmware_fusion" do |vmware|
+        vmware.gui = false
+        vmware.memory = vm_config['memory']
+        vmware.cpus = vm_config['cpus']
+      end
+
+      # 执行配置脚本
+      vm.vm.provision "shell", inline: <<-SHELL
+        # 更新系统包并安装工具
+        sudo dnf update -y
+        sudo dnf install -y epel-release wget vim net-tools gcc make tar git unzip sysstat tree
+
+        # 设置主机名
+        sudo hostnamectl set-hostname #{vm_config['name']}
+
+        # 配置 /etc/hosts，避免重复写入
+#         grep -qxF "192.168.201.10 centos-controlplane" /etc/hosts || echo "192.168.201.10 centos-controlplane" | sudo tee -a /etc/hosts
+#         grep -qxF "192.168.201.11 centos-node01" /etc/hosts || echo "192.168.201.11 centos-node01" | sudo tee -a /etc/hosts
+#         grep -qxF "192.168.201.12 centos-node02" /etc/hosts || echo "192.168.201.12 centos-node02" | sudo tee -a /etc/hosts
+      SHELL
+    end
+  end
+end
